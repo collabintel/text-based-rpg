@@ -1,0 +1,52 @@
+States:
+
+EmptyState
+GameBeginningState
+CharactersListingState
+CharacterCreatingState
+GameEndingState
+
+ExplorationState
+BattleState
+
+GameSavingState
+GameLoadingState
+
+Events:
+
+BeginGameEvent
+ChooseCharacterEvent
+CreateCharacterEvent
+EndGameEvent
+
+ExploreEvent
+FightEvent
+
+SaveGameEvent
+LoadGameEvent
+
+Transitions:
+
+From						To 							Event 						Conditions
+---------------------------------------------------------------------------------------------------------------
+EmptyState                  GameBeginningState          BeginGameEvent              No Condition
+GameBeginningState			CharactersListingState		ChooseCharacterEvent		Player Chose To Play A New Game
+CharactersListingState		CharacterCreatingState		CreateCharacterEvent		Create Character Selected
+CharactersListingState		ExplorationState			ExploreEvent        		Listed Character Selected
+CharactersListingState		GameEndingState				EndGameEvent        		Exit Requested
+CharacterCreatingState		CharactersListingState		ChooseCharacterEvent		Character Created
+CharacterCreatingState		GameEndingState				EndGameEvent        		Exit Requested
+
+ExplorationState			BattleState					FightEvent  				Enemy Found In The Room Explored
+ExplorationState			GameEndingState				EndGameEvent				Exit Requested
+BattleState					ExplorationState			ExploreEvent					Enemy Defeated
+BattleState					GameEndingState				EndGameEvent					Player Defeated or Exit Requested
+
+GameBeginningState			GameLoadingState			LoadGameEvent				Player Chose To Load A Saved Game
+GameLoadingState			ExplorationState			ExploreEvent				Loaded Game Was Saved While Exploring
+GameLoadingState			BattleState					FightEvent  				Loaded Game Was Saved While Fighting
+ExplorationState			GameSavingState				SaveGameEvent				Player Chose To Save Game While Exploring
+BattleState					GameSavingState				SaveGameEvent				Player Chose To Save Game While Fighting
+GameSavingState				ExplorationState			ExploreEvent				Game Saved And Returned To Exploration State
+GameSavingState				BattleState					FightEvent  				Game Saved And Returned To Battle State
+

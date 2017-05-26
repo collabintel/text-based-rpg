@@ -1,0 +1,21 @@
+# Feature: As a player I want to create a character
+
+# Given I choose to create a character
+# When I enter character's name, health and attack damage between 0-100
+# Then Character is created
+
+# Given I choose to create a character
+# When I don't enter character's name
+# Then Character is not created and prints message "Please enter character name"
+
+# Given I choose to create a character
+# When I enter character's health lower than 0 or bigger than 100
+# Then Character is not created and prints message "Please enter health between 0-100"
+
+# Given I choose to create a character
+# When I enter character's attack damage lower than 0 or bigger than 100
+# Then Character is not created and prints message "Please enter attack damage between 0-100"
+
+# Given Created character listed
+# When I choose the character
+# Then Character is chosen
