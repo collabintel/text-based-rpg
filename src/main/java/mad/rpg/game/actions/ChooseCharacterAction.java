@@ -40,7 +40,7 @@ public class ChooseCharacterAction implements Action {
             Output.getInstance().printLine((i + 1) + ". " + names.get(i).getValue());
         }
 
-        String receivedInput = Input.getInstance().choice(0, 9, Arrays.asList(Commands.CREATE_CHARACTER, Commands.EXIT));
+        String receivedInput = Input.getInstance().choice(0, playerRepository.characters().size(), Arrays.asList(Commands.CREATE_CHARACTER, Commands.EXIT));
 
         if(receivedInput.equals(Commands.EXIT)){
             context.addEvent(EventType.EXIT_REQUESTED);
