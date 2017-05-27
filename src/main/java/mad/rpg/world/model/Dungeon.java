@@ -2,6 +2,7 @@ package mad.rpg.world.model;
 
 import mad.rpg.game.Messages;
 import mad.rpg.utils.Output;
+import mad.rpg.utils.UtilLocator;
 
 public class Dungeon implements World {
 
@@ -30,28 +31,28 @@ public class Dungeon implements World {
         switch (direction) {
             case NORTH:
                 if(locations[x].length <= y + 1){
-                    Output.getInstance().printLine(Messages.CANT_GO_THAT_WAY);
+                    UtilLocator.locate().output().printLine(Messages.CANT_GO_THAT_WAY);
                     return false;
                 }
                 currentLocation = locations[x][y + 1];
                 return true;
             case SOUTH:
                 if(y.equals(0)){
-                    Output.getInstance().printLine(Messages.CANT_GO_THAT_WAY);
+                    UtilLocator.locate().output().printLine(Messages.CANT_GO_THAT_WAY);
                     return false;
                 }
                 currentLocation = locations[x][y - 1];
                 return true;
             case EAST:
                 if(locations.length <= x + 1){
-                    Output.getInstance().printLine(Messages.CANT_GO_THAT_WAY);
+                    UtilLocator.locate().output().printLine(Messages.CANT_GO_THAT_WAY);
                     return false;
                 }
                 currentLocation = locations[x + 1][y];
                 return true;
             case WEST:
                 if(x.equals(0)){
-                    Output.getInstance().printLine(Messages.CANT_GO_THAT_WAY);
+                    UtilLocator.locate().output().printLine(Messages.CANT_GO_THAT_WAY);
                     return false;
                 }
                 currentLocation = locations[x - 1][y];

@@ -15,6 +15,7 @@ import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
 import mad.rpg.utils.Input;
 import mad.rpg.utils.Output;
+import mad.rpg.utils.UtilLocator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,37 +30,37 @@ public class CreateCharacterAction implements Action {
 
     @Override
     public void process(Context context) {
-        Output.getInstance().printLine(Messages.CREATE_YOUR_CHARACTER);
+        UtilLocator.locate().output().printLine(Messages.CREATE_YOUR_CHARACTER);
 
         List<Info> infos = new ArrayList<>();
 
-        Output.getInstance().printLine(InfoType.NAME + ":");
-        String nameInput = Input.getInstance().receiveInput();
+        UtilLocator.locate().output().printLine(InfoType.NAME + ":");
+        String nameInput = UtilLocator.locate().input().receiveInput();
         infos.add(new Name(nameInput));
 
         List<Stat> stats = new ArrayList<>();
 
-        Output.getInstance().printLine(StatType.ATTACK_DAMAGE + ":");
-        Integer attackDamageInput = Input.getInstance().choice(1, 100);
+        UtilLocator.locate().output().printLine(StatType.ATTACK_DAMAGE + ":");
+        Integer attackDamageInput = UtilLocator.locate().input().choice(1, 100);
         stats.add(new AttackDamage(attackDamageInput, attackDamageInput));
 
-        Output.getInstance().printLine(StatType.HEALTH + ":");
-        Integer healthInput = Input.getInstance().choice(1, 100);
+        UtilLocator.locate().output().printLine(StatType.HEALTH + ":");
+        Integer healthInput = UtilLocator.locate().input().choice(1, 100);
         stats.add(new Health(healthInput, healthInput));
 
-        Output.getInstance().printLine(Messages.SAVE_CHARACTER_PROMPT);
-        Boolean saveCharacterPrompt = Input.getInstance().prompt();
+        UtilLocator.locate().output().printLine(Messages.SAVE_CHARACTER_PROMPT);
+        Boolean saveCharacterPrompt = UtilLocator.locate().input().prompt();
 
         if(!saveCharacterPrompt){
             context.addEvent(EventType.CHARACTER_NOT_CREATED);
-            Output.getInstance().printLine(Messages.CHARACTER_NOT_ADDED);
+            UtilLocator.locate().output().printLine(Messages.CHARACTER_NOT_ADDED);
             return;
         }
 
         playerRepository.add(new Player(infos, stats));
 
         context.addEvent(EventType.CHARACTER_CREATED);
-        Output.getInstance().printLine(Messages.CHARACTER_ADDED);
+        UtilLocator.locate().output().printLine(Messages.CHARACTER_ADDED);
     }
 
 

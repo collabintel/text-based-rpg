@@ -9,28 +9,24 @@ import java.util.regex.Pattern;
 
 public class Input {
 
-    private static final class InputNested {
-        private static final Input INSTANCE = new Input();
-    }
+    private Scanner scanner;
 
-    public static Input getInstance() {
-        return InputNested.INSTANCE;
+    protected Input() {
+        scanner = new Scanner(System.in);
     }
 
     public String receiveInput() {
-        Scanner scanner = new Scanner(System.in);
         String input = null;
         while (true){
             input = scanner.nextLine();
             if(!input.equals("")){
                 break;
             }
-            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+            UtilLocator.locate().output().printMessage(Messages.INVALID_COMMAND);
         }
         return input;
     }
     public String receiveInput(List<String> commands) {
-        Scanner scanner = new Scanner(System.in);
         String input = null;
         while (true){
             input = scanner.nextLine();
@@ -43,13 +39,12 @@ public class Input {
             if (isCommand){
                 break;
             }
-            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+            UtilLocator.locate().output().printMessage(Messages.INVALID_COMMAND);
         }
         return input;
     }
 
     public Integer choice(Integer minRange, Integer maxRange) {
-        Scanner scanner = new Scanner(System.in);
         Integer result = null;
         while (true){
             String input = scanner.nextLine();
@@ -60,13 +55,12 @@ public class Input {
                     break;
                 }
             }
-            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+            UtilLocator.locate().output().printMessage(Messages.INVALID_COMMAND);
         }
         return result;
     }
 
     public String choice(int minRange, int maxRange, List<String> commands) {
-        Scanner scanner = new Scanner(System.in);
         String input = null;
         while (true){
             input = scanner.nextLine();
@@ -86,14 +80,13 @@ public class Input {
                     break;
                 }
             }
-            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+            UtilLocator.locate().output().printMessage(Messages.INVALID_COMMAND);
         }
         return input;
     }
 
     public Boolean prompt() {
         Boolean promptCondition = null;
-        Scanner scanner = new Scanner(System.in);
         while (true){
             String input = scanner.nextLine();
             if(input.toLowerCase().equals(Commands.YES_WORD) || input.toLowerCase().equals(Commands.YES_LETTER)){
@@ -103,7 +96,7 @@ public class Input {
                 promptCondition = false;
                 break;
             }
-            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+            UtilLocator.locate().output().printMessage(Messages.INVALID_COMMAND);
         }
         return promptCondition;
     }

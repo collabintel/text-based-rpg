@@ -12,6 +12,7 @@ import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
 import mad.rpg.utils.Input;
 import mad.rpg.utils.Output;
+import mad.rpg.utils.UtilLocator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,8 +29,8 @@ public class ChooseCharacterAction implements Action {
 
     @Override
     public void process(Context context) {
-        Output.getInstance().printLine(Messages.CHOOSE_YOUR_CHARACTER);
-        Output.getInstance().printLine(Choices.CREATE_A_CHARACTER_CHOICE);
+        UtilLocator.locate().output().printLine(Messages.CHOOSE_YOUR_CHARACTER);
+        UtilLocator.locate().output().printLine(Choices.CREATE_A_CHARACTER_CHOICE);
 
         List<Info> names = playerRepository
                 .characters()
@@ -38,10 +39,10 @@ public class ChooseCharacterAction implements Action {
                 .collect(Collectors.toList());
 
         for (int i = 0; i < names.size(); i++) {
-            Output.getInstance().printLine((i + 1) + ". " + names.get(i).getValue());
+            UtilLocator.locate().output().printLine((i + 1) + ". " + names.get(i).getValue());
         }
 
-        String receivedInput = Input.getInstance().choice(0, playerRepository.characters().size(), Arrays.asList(Commands.CREATE_CHARACTER, Commands.EXIT));
+        String receivedInput = UtilLocator.locate().input().choice(0, playerRepository.characters().size(), Arrays.asList(Commands.CREATE_CHARACTER, Commands.EXIT));
 
         if(receivedInput.equals(Commands.EXIT)){
             context.addEvent(EventType.EXIT_REQUESTED);
@@ -57,12 +58,12 @@ public class ChooseCharacterAction implements Action {
         Optional<Character> player = playerRepository.character(choice);
 
         if(!player.isPresent()){
-            Output.getInstance().printMessage(Messages.CHARACTER_NOT_FOUND);
+            UtilLocator.locate().output().printMessage(Messages.CHARACTER_NOT_FOUND);
             return;
         }
 
         context.withPlayer(player.get());
-        Output.getInstance().printLine(String.format(Messages.CHARACTER_SELECTED, player.get().getInfo(InfoType.NAME).get().getValue()));
+        UtilLocator.locate().output().printLine(String.format(Messages.CHARACTER_SELECTED, player.get().getInfo(InfoType.NAME).get().getValue()));
         context.addEvent(EventType.CHARACTER_SELECTED);
     }
 

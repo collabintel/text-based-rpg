@@ -6,6 +6,7 @@ import mad.rpg.game.actions.Action;
 import mad.rpg.game.actions.ActionFactory;
 import mad.rpg.game.transitions.Transition;
 import mad.rpg.utils.Output;
+import mad.rpg.utils.UtilLocator;
 
 import java.util.Optional;
 
@@ -36,8 +37,8 @@ public class GameStateMachine implements StateMachine {
                 action.process(context);
             }
         } catch (StateNotFoundException e) {
-            Output.getInstance().printMessage(e.getMessage());
-            Output.getInstance().printMessage(Messages.UNHANDLED_OPERATION);
+            UtilLocator.locate().output().printMessage(e.getMessage());
+            UtilLocator.locate().output().printMessage(Messages.UNHANDLED_OPERATION);
         }
     }
 }
