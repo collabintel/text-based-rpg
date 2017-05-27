@@ -1,5 +1,7 @@
 package mad.rpg.game.actions;
 
+import mad.rpg.characters.actions.ChooseCharacterAction;
+import mad.rpg.characters.actions.CreateCharacterAction;
 import mad.rpg.characters.model.CharacterRepository;
 import mad.rpg.characters.model.PlayerRepository;
 import mad.rpg.game.states.StateNotFoundException;

@@ -1,5 +1,6 @@
-package mad.rpg.game.conditions;
+package mad.rpg.characters.conditions;
 
+import mad.rpg.game.conditions.Condition;
 import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
 

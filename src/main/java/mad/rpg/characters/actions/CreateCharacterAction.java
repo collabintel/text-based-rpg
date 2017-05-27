@@ -1,4 +1,4 @@
-package mad.rpg.game.actions;
+package mad.rpg.characters.actions;
 
 import mad.rpg.characters.infos.Info;
 import mad.rpg.characters.infos.InfoType;
@@ -10,6 +10,7 @@ import mad.rpg.characters.stats.Health;
 import mad.rpg.characters.stats.Stat;
 import mad.rpg.characters.stats.StatType;
 import mad.rpg.game.Messages;
+import mad.rpg.game.actions.Action;
 import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
 import mad.rpg.utils.Input;

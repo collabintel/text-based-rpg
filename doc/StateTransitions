@@ -4,45 +4,42 @@ EmptyState
 GameBeginningState
 CharactersListingState
 CharacterCreatingState
-GameEndingState
-
+GameBuildingState
 ExplorationState
 BattleState
-
 GameSavingState
 GameLoadingState
+GameEndingState
 
-Events:
+Actions:
 
-BeginGameEvent
-ChooseCharacterEvent
-CreateCharacterEvent
-EndGameEvent
-
-ExploreEvent
-FightEvent
-
-SaveGameEvent
-LoadGameEvent
+BeginGameAction
+ChooseCharacterAction
+CreateCharacterAction
+BuildGameAction
+ExploreAction
+FightAction
+SaveGameAction
+LoadGameAction
+EndGameAction
 
 Transitions:
 
-From						To 							Event 						Conditions
+From						To 							Action 						Conditions
 ---------------------------------------------------------------------------------------------------------------
-EmptyState                  GameBeginningState          BeginGameEvent              No Condition
-GameBeginningState			CharactersListingState		ChooseCharacterEvent		Player Chose To Play A New Game
-CharactersListingState		CharacterCreatingState		CreateCharacterEvent		Create Character Selected
-CharactersListingState		ExplorationState			ExploreEvent        		Listed Character Selected
-CharactersListingState		GameEndingState				EndGameEvent        		Exit Requested
+EmptyState                  GameBeginningState          BeginGameAction             No Condition
+GameBeginningState			CharactersListingState		ChooseCharacterAction		Player Chose To Play A New Game
+GameBeginningState			GameLoadingState			LoadGameAction				Player Chose To Load A Saved Game
+CharactersListingState		CharacterCreatingState		CreateCharacterAction		Create Character Selected
+CharactersListingState		GameBuildingState			BuildGameAction        		Listed Character Selected
+CharactersListingState		GameEndingState				EndGame        		Exit Requested
 CharacterCreatingState		CharactersListingState		ChooseCharacterEvent		Character Created
 CharacterCreatingState		GameEndingState				EndGameEvent        		Exit Requested
-
+GameBuildingState           ExplorationState            ExploreEvent                Game Built
 ExplorationState			BattleState					FightEvent  				Enemy Found In The Room Explored
 ExplorationState			GameEndingState				EndGameEvent				Exit Requested
-BattleState					ExplorationState			ExploreEvent					Enemy Defeated
-BattleState					GameEndingState				EndGameEvent					Player Defeated or Exit Requested
-
-GameBeginningState			GameLoadingState			LoadGameEvent				Player Chose To Load A Saved Game
+BattleState					ExplorationState			ExploreEvent				Enemy Defeated
+BattleState					GameEndingState				EndGameEvent				Player Defeated or Exit Requested
 GameLoadingState			ExplorationState			ExploreEvent				Loaded Game Was Saved While Exploring
 GameLoadingState			BattleState					FightEvent  				Loaded Game Was Saved While Fighting
 ExplorationState			GameSavingState				SaveGameEvent				Player Chose To Save Game While Exploring

@@ -1,7 +1,7 @@
 package mad.rpg.game.states;
 
-import mad.rpg.game.conditions.CharacterCreationBeginCondition;
-import mad.rpg.game.conditions.CharacterCreationEndCondition;
+import mad.rpg.characters.conditions.CharacterCreationBeginCondition;
+import mad.rpg.characters.conditions.CharacterCreationEndCondition;
 import mad.rpg.game.conditions.ExitRequestedCondition;
 import mad.rpg.game.conditions.NoCondition;
 import mad.rpg.game.transitions.StateTransition;
