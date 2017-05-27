@@ -15,7 +15,10 @@ public class Messages {
     public static final String SAVE_CHARACTER_PROMPT = "Do you want to save this character?";
     public static final String CHARACTER_NOT_FOUND = "Character not found, please select an existing character.";
     public static final String CHARACTER_SELECTED = "%s selected";
-    
+    public static final String CANT_GO_THAT_WAY = "Can't go that way!";
+    public static final String YOU_HAVE_ENTERED_THE_DUNGEON = "You have entered the dungeon...\nYou can explore it by going north,south,east and west.";
+    public static final String YOU_ARE_IN_ROOM = "You are in room %s";
+
     /**
      * Error Messages
      */

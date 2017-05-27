@@ -2,7 +2,9 @@ package mad.rpg.game.states;
 
 import mad.rpg.characters.conditions.CharacterCreationBeginCondition;
 import mad.rpg.characters.conditions.CharacterCreationEndCondition;
+import mad.rpg.characters.conditions.CharacterSelectedCondition;
 import mad.rpg.game.conditions.ExitRequestedCondition;
+import mad.rpg.game.conditions.GameBuiltCondition;
 import mad.rpg.game.conditions.NoCondition;
 import mad.rpg.game.transitions.StateTransition;
 import mad.rpg.game.transitions.Transition;
@@ -21,6 +23,9 @@ public class GameStateTableBuilder implements StateTableBuilder {
         transitions.add(new StateTransition(StateType.CHARACTER_LISTING_STATE, StateType.CHARACTER_CREATING_STATE, new CharacterCreationBeginCondition()));
         transitions.add(new StateTransition(StateType.CHARACTER_CREATING_STATE, StateType.CHARACTER_LISTING_STATE, new CharacterCreationEndCondition()));
         transitions.add(new StateTransition(StateType.CHARACTER_CREATING_STATE, StateType.GAME_ENDING_STATE, new ExitRequestedCondition()));
+        transitions.add(new StateTransition(StateType.CHARACTER_LISTING_STATE, StateType.GAME_BUILDING_STATE, new CharacterSelectedCondition()));
+        transitions.add(new StateTransition(StateType.GAME_BUILDING_STATE, StateType.EXPLORATION_STATE, new GameBuiltCondition()));
+        transitions.add(new StateTransition(StateType.EXPLORATION_STATE, StateType.GAME_ENDING_STATE, new ExitRequestedCondition()));
 
         return new GameStateTable(transitions);
     }

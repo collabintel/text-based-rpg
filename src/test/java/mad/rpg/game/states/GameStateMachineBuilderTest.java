@@ -1,6 +1,6 @@
 //package mad.rpg.game.states;
 //
-//import mad.rpg.game.actions.GameEventFactory;
+//import mad.rpg.game.actions.GameActionFactory;
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
@@ -14,14 +14,14 @@
 //import static org.powermock.api.mockito.PowerMockito.*;
 //
 //@RunWith(PowerMockRunner.class)
-//@PrepareForTest({GameStateTableBuilder.class, GameEventFactory.class, GameStateMachine.class})
+//@PrepareForTest({GameStateTableBuilder.class, GameActionFactory.class, GameStateMachine.class})
 //public class GameStateMachineBuilderTest {
 //
 //    @Mock
 //    GameStateTableBuilder gameStateTableBuilder;
 //
 //    @Mock
-//    GameEventFactory gameEventFactory;
+//    GameActionFactory gameEventFactory;
 //
 //    @Mock
 //    StateTable stateTable;
@@ -34,11 +34,11 @@
 //    @Test
 //    public void should_buildStateMachine_when_buildCalled() throws Exception {
 //        mockStatic(GameStateTableBuilder.class);
-//        mockStatic(GameEventFactory.class);
+//        mockStatic(GameActionFactory.class);
 //        mockStatic(GameStateMachine.class);
 //
 //        whenNew(GameStateTableBuilder.class).withNoArguments().thenReturn(gameStateTableBuilder);
-//        whenNew(GameEventFactory.class).withNoArguments().thenReturn(gameEventFactory);
+//        whenNew(GameActionFactory.class).withNoArguments().thenReturn(gameEventFactory);
 //
 //        when(gameStateTableBuilder.build()).thenReturn(stateTable);
 //

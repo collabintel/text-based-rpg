@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -91,4 +92,12 @@ public class InputTest {
         assertThat(result).isEqualTo(false);
     }
 
+    @Test
+    public void should_returnInput_when_receiveInputWithValidations() throws Exception {
+        System.setIn(new ByteArrayInputStream(("asd\neognajfnjaf\n" + Commands.EXIT).getBytes()));
+
+        String input = Input.getInstance().receiveInput(Arrays.asList(new String[]{ Commands.EXIT }));
+
+        assertThat(input).isEqualTo(Commands.EXIT);
+    }
 }

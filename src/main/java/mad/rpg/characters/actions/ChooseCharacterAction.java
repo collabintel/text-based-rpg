@@ -61,9 +61,9 @@ public class ChooseCharacterAction implements Action {
             return;
         }
 
-        context.setPlayer(player.get());
+        context.withPlayer(player.get());
         Output.getInstance().printLine(String.format(Messages.CHARACTER_SELECTED, player.get().getInfo(InfoType.NAME).get().getValue()));
-        context.addEvent(EventType.CHARACTER_CHOSEN);
+        context.addEvent(EventType.CHARACTER_SELECTED);
     }
 
 }

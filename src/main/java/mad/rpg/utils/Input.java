@@ -29,6 +29,24 @@ public class Input {
         }
         return input;
     }
+    public String receiveInput(List<String> commands) {
+        Scanner scanner = new Scanner(System.in);
+        String input = null;
+        while (true){
+            input = scanner.nextLine();
+            Boolean isCommand = false;
+            for (String command : commands) {
+                if(command.equals(input)){
+                    isCommand = true;
+                }
+            }
+            if (isCommand){
+                break;
+            }
+            Output.getInstance().printMessage(Messages.INVALID_COMMAND);
+        }
+        return input;
+    }
 
     public Integer choice(Integer minRange, Integer maxRange) {
         Scanner scanner = new Scanner(System.in);

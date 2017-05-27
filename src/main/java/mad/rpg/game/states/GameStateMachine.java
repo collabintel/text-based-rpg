@@ -3,7 +3,7 @@ package mad.rpg.game.states;
 import mad.rpg.game.Messages;
 import mad.rpg.game.context.Context;
 import mad.rpg.game.actions.Action;
-import mad.rpg.game.actions.EventFactory;
+import mad.rpg.game.actions.ActionFactory;
 import mad.rpg.game.transitions.Transition;
 import mad.rpg.utils.Output;
 
@@ -12,12 +12,12 @@ import java.util.Optional;
 public class GameStateMachine implements StateMachine {
 
     private StateTable stateTable;
-    private EventFactory eventFactory;
+    private ActionFactory actionFactory;
     private Context context;
 
-    public GameStateMachine(StateTable stateTable, Context context, EventFactory eventFactory) {
+    public GameStateMachine(StateTable stateTable, Context context, ActionFactory actionFactory) {
         this.stateTable = stateTable;
-        this.eventFactory = eventFactory;
+        this.actionFactory = actionFactory;
         this.context = context;
     }
 
@@ -32,7 +32,7 @@ public class GameStateMachine implements StateMachine {
                 if(transition.isPresent()){
                     state = transition.get().to();
                 }
-                Action action = eventFactory.createEvent(state);
+                Action action = actionFactory.createAction(state);
                 action.process(context);
             }
         } catch (StateNotFoundException e) {

@@ -3,7 +3,7 @@
 //import mad.rpg.game.context.Context;
 //import mad.rpg.game.actions.BeginGameAction;
 //import mad.rpg.game.actions.Action;
-//import mad.rpg.game.actions.EventFactory;
+//import mad.rpg.game.actions.ActionFactory;
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.mockito.Mock;
@@ -18,7 +18,7 @@
 //    Context context;
 //
 //    @Mock
-//    EventFactory eventFactory;
+//    ActionFactory actionFactory;
 //
 //    @Mock
 //    StateTable stateTable;
@@ -30,7 +30,7 @@
 //
 //    @Before
 //    public void setUp() throws Exception {
-//        stateMachine = new GameStateMachine(stateTable, context, eventFactory);
+//        stateMachine = new GameStateMachine(stateTable, context, actionFactory);
 //    }
 //
 //    /**
