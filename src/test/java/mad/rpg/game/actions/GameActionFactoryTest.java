@@ -1,5 +1,6 @@
 package mad.rpg.game.actions;
 
+import mad.rpg.battle.actions.FightAction;
 import mad.rpg.characters.actions.ChooseCharacterAction;
 import mad.rpg.characters.actions.CreateCharacterAction;
 import mad.rpg.game.Messages;
@@ -23,44 +24,51 @@ public class GameActionFactoryTest {
 
     @Test
     public void should_throwStateNotFoundException_when_createActionWithNullParameterCalled() throws Exception {
-        assertThatThrownBy(() -> { actionFactory.createAction(null); })
+        assertThatThrownBy(() -> { actionFactory.create(null); })
                 .isInstanceOf(StateNotFoundException.class)
                 .withFailMessage(Messages.STATE_NOT_FOUND_EXCEPTION_MESSAGE);
     }
 
     @Test
     public void should_createBeginGameAction_when_createActionWithGameBeginningStateTypeCalled() throws Exception {
-        Action beginGameAction = actionFactory.createAction(StateType.GAME_BEGINNING_STATE);
+        Action beginGameAction = actionFactory.create(StateType.GAME_BEGINNING_STATE);
         assertThat(beginGameAction).isInstanceOf(BeginGameAction.class);
     }
 
     @Test
     public void should_createEndGameAction_when_createActionWithGameEndingStateTypeCalled() throws Exception {
-        Action endGameAction = actionFactory.createAction(StateType.GAME_ENDING_STATE);
+        Action endGameAction = actionFactory.create(StateType.GAME_ENDING_STATE);
         assertThat(endGameAction).isInstanceOf(EndGameAction.class);
     }
 
     @Test
     public void should_createChooseCharacterAction_when_createActionWithCharacterListingStateTypeCalled() throws Exception {
-        Action chooseCharacterAction = actionFactory.createAction(StateType.CHARACTER_LISTING_STATE);
+        Action chooseCharacterAction = actionFactory.create(StateType.CHARACTER_LISTING_STATE);
         assertThat(chooseCharacterAction).isInstanceOf(ChooseCharacterAction.class);
     }
 
     @Test
     public void should_createCreateCharacterAction_when_createActionWithCharacterCreatingStateTypeCalled() throws Exception {
-        Action createCharacterAction = actionFactory.createAction(StateType.CHARACTER_CREATING_STATE);
+        Action createCharacterAction = actionFactory.create(StateType.CHARACTER_CREATING_STATE);
         assertThat(createCharacterAction).isInstanceOf(CreateCharacterAction.class);
     }
 
     @Test
     public void should_createBuildGameAction_when_createActionWithGameBuildingStateTypeCalled() throws Exception {
-        Action buildGameAction = actionFactory.createAction(StateType.GAME_BUILDING_STATE);
+        Action buildGameAction = actionFactory.create(StateType.GAME_BUILDING_STATE);
         assertThat(buildGameAction).isInstanceOf(BuildGameAction.class);
     }
 
     @Test
     public void should_createExploreAction_when_createActionWithExplorationStateTypeCalled() throws Exception {
-        Action exploreAction = actionFactory.createAction(StateType.EXPLORATION_STATE);
+        Action exploreAction = actionFactory.create(StateType.EXPLORATION_STATE);
         assertThat(exploreAction).isInstanceOf(ExploreAction.class);
+    }
+
+    @Test
+    public void should_createFightAction_when_createActionWithBattleStateTypeCalled() throws Exception {
+        Action fightAction = actionFactory.create(StateType.BATTLE_STATE);
+        assertThat(fightAction).isInstanceOf(FightAction.class);
+
     }
 }

@@ -3,6 +3,8 @@ package mad.rpg.world.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DungeonTest {
@@ -22,15 +24,15 @@ public class DungeonTest {
     @Before
     public void setUp() throws Exception {
         locations = new Room[3][2];
-        startRoom = new Room(0, 0);
+        startRoom = new Room(0, 0, Optional.empty());
         locations[startRoom.getX()][startRoom.getY()] = startRoom;
-        northRoom = new Room(0, 1);
+        northRoom = new Room(0, 1, Optional.empty());
         locations[northRoom.getX()][northRoom.getY()] = northRoom;
-        eastRoom = new Room(1, 0);
+        eastRoom = new Room(1, 0, Optional.empty());
         locations[eastRoom.getX()][eastRoom.getY()] = eastRoom;
-        lastEastRoom = new Room(2, 0);
+        lastEastRoom = new Room(2, 0, Optional.empty());
         locations[lastEastRoom.getX()][lastEastRoom.getY()] = lastEastRoom;
-        locations[1][1] = new Room(1, 1);
+        locations[1][1] = new Room(1, 1, Optional.empty());
         dungeon = new Dungeon(locations);
     }
 

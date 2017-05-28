@@ -1,7 +1,11 @@
 package mad.rpg.world.model;
 
+import mad.rpg.characters.model.Enemy;
+import mad.rpg.characters.model.HostileCharacter;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,9 +16,12 @@ public class RoomTest {
 
     Location room;
 
+    Optional<HostileCharacter> enemy;
+
     @Before
     public void setUp() throws Exception {
-        room = new Room(X, Y);
+        enemy = Optional.of(new Enemy(null, null));
+        room = new Room(X, Y, enemy);
     }
 
     @Test
@@ -29,5 +36,12 @@ public class RoomTest {
         Integer y = room.getY();
 
         assertThat(y).isEqualTo(Y);
+    }
+
+    @Test
+    public void should_getEnemy_when_enemyCalled() throws Exception {
+        Optional<HostileCharacter> enemyActual = room.hostile();
+
+        assertThat(enemyActual).isEqualTo(enemy);
     }
 }

@@ -38,7 +38,7 @@ CharacterCreatingState		GameEndingState				EndGameAction        		Exit Requested
 GameBuildingState           ExplorationState            ExploreAction               Game Built
 ExplorationState			BattleState					FightAction 				Enemy Found In The Room Explored
 ExplorationState			GameEndingState				EndGameAction				Exit Requested
-BattleState					ExplorationState			ExploreAction				Enemy Defeated
+BattleState					ExplorationState			ExploreAction				Player Ran Away or Enemy Defeated
 BattleState					GameEndingState				EndGameAction				Player Defeated or Exit Requested
 GameLoadingState			ExplorationState			ExploreAction				Loaded Game Was Saved While Exploring
 GameLoadingState			BattleState					FightAction  				Loaded Game Was Saved While Fighting

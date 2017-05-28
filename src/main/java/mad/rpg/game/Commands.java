@@ -13,4 +13,6 @@ public class Commands {
     public static final String GO_SOUTH = "go south";
     public static final String GO_EAST = "go east";
     public static final String GO_WEST = "go west";
+    public static final String FIGHT = "fight";
+    public static final String RUN_AWAY = "run away";
 }

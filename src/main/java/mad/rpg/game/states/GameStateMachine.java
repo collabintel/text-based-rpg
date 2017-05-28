@@ -5,7 +5,6 @@ import mad.rpg.game.context.Context;
 import mad.rpg.game.actions.Action;
 import mad.rpg.game.actions.ActionFactory;
 import mad.rpg.game.transitions.Transition;
-import mad.rpg.utils.Output;
 import mad.rpg.utils.UtilLocator;
 
 import java.util.Optional;
@@ -33,7 +32,7 @@ public class GameStateMachine implements StateMachine {
                 if(transition.isPresent()){
                     state = transition.get().to();
                 }
-                Action action = actionFactory.createAction(state);
+                Action action = actionFactory.create(state);
                 action.process(context);
             }
         } catch (StateNotFoundException e) {

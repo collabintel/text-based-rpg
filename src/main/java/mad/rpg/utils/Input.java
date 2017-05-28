@@ -16,7 +16,7 @@ public class Input {
     }
 
     public String receiveInput() {
-        String input = null;
+        String input;
         while (true){
             input = scanner.nextLine();
             if(!input.equals("")){
@@ -27,9 +27,9 @@ public class Input {
         return input;
     }
     public String receiveInput(List<String> commands) {
-        String input = null;
+        String input;
         while (true){
-            input = scanner.nextLine();
+            input = scanner.nextLine().toLowerCase();
             Boolean isCommand = false;
             for (String command : commands) {
                 if(command.equals(input)){
@@ -45,7 +45,7 @@ public class Input {
     }
 
     public Integer choice(Integer minRange, Integer maxRange) {
-        Integer result = null;
+        Integer result;
         while (true){
             String input = scanner.nextLine();
             Boolean isNumber = Pattern.matches("[0-9]+", input);
@@ -61,9 +61,9 @@ public class Input {
     }
 
     public String choice(int minRange, int maxRange, List<String> commands) {
-        String input = null;
+        String input;
         while (true){
-            input = scanner.nextLine();
+            input = scanner.nextLine().toLowerCase();
             Boolean isCommand = false;
             for (String command : commands) {
                 if(command.equals(input)){
@@ -86,7 +86,7 @@ public class Input {
     }
 
     public Boolean prompt() {
-        Boolean promptCondition = null;
+        Boolean promptCondition;
         while (true){
             String input = scanner.nextLine();
             if(input.toLowerCase().equals(Commands.YES_WORD) || input.toLowerCase().equals(Commands.YES_LETTER)){

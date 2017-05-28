@@ -5,6 +5,6 @@ import mad.rpg.game.states.StateType;
 
 public interface ActionFactory {
 
-    Action createAction(StateType state) throws StateNotFoundException;
+    Action create(StateType state) throws StateNotFoundException;
 
 }

@@ -1,5 +1,6 @@
 package mad.rpg.game.actions;
 
+import mad.rpg.battle.actions.FightAction;
 import mad.rpg.characters.actions.ChooseCharacterAction;
 import mad.rpg.characters.actions.CreateCharacterAction;
 import mad.rpg.characters.model.CharacterRepository;
@@ -21,7 +22,7 @@ public class GameActionFactory implements ActionFactory {
     }
 
     @Override
-    public Action createAction(StateType stateType) throws StateNotFoundException {
+    public Action create(StateType stateType) throws StateNotFoundException {
         if(stateType == null){
             throw new StateNotFoundException();
         }
@@ -38,6 +39,8 @@ public class GameActionFactory implements ActionFactory {
                 return new BeginGameAction();
             case EXPLORATION_STATE:
                 return new ExploreAction();
+            case BATTLE_STATE:
+                return new FightAction();
             case GAME_BUILDING_STATE:
                 return new BuildGameAction(worldBuilder);
         }

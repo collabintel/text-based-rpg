@@ -38,6 +38,9 @@ public class GameStateTableBuilderTest {
                 .contains(tuple(StateType.CHARACTER_CREATING_STATE, StateType.GAME_ENDING_STATE))
                 .contains(tuple(StateType.CHARACTER_LISTING_STATE, StateType.GAME_BUILDING_STATE))
                 .contains(tuple(StateType.GAME_BUILDING_STATE, StateType.EXPLORATION_STATE))
-                .contains(tuple(StateType.EXPLORATION_STATE, StateType.GAME_ENDING_STATE));
+                .contains(tuple(StateType.EXPLORATION_STATE, StateType.GAME_ENDING_STATE))
+                .contains(tuple(StateType.EXPLORATION_STATE, StateType.BATTLE_STATE))
+                .contains(tuple(StateType.BATTLE_STATE, StateType.EXPLORATION_STATE))
+                .contains(tuple(StateType.BATTLE_STATE, StateType.GAME_ENDING_STATE));
     }
 }

@@ -5,10 +5,7 @@ import mad.rpg.characters.infos.InfoType;
 import mad.rpg.characters.infos.Name;
 import mad.rpg.characters.model.CharacterRepository;
 import mad.rpg.characters.model.Player;
-import mad.rpg.characters.stats.AttackDamage;
-import mad.rpg.characters.stats.Health;
-import mad.rpg.characters.stats.Stat;
-import mad.rpg.characters.stats.StatType;
+import mad.rpg.characters.stats.*;
 import mad.rpg.game.Messages;
 import mad.rpg.game.actions.Action;
 import mad.rpg.game.context.Context;
@@ -17,6 +14,7 @@ import mad.rpg.utils.Input;
 import mad.rpg.utils.Output;
 import mad.rpg.utils.UtilLocator;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +37,8 @@ public class CreateCharacterAction implements Action {
         infos.add(new Name(nameInput));
 
         List<Stat> stats = new ArrayList<>();
+
+        stats.add(new Experience(BigDecimal.ZERO, BigDecimal.ZERO));
 
         UtilLocator.locate().output().printLine(StatType.ATTACK_DAMAGE + ":");
         Integer attackDamageInput = UtilLocator.locate().input().choice(1, 100);

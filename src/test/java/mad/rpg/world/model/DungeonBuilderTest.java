@@ -20,6 +20,7 @@ public class DungeonBuilderTest {
 
         Location[][] locations = world.locations();
 
+
         assertThat(locations.length).isGreaterThanOrEqualTo(5).isLessThanOrEqualTo(10);
         for (Location[] locationArray : locations) {
             assertThat(locationArray.length).isGreaterThanOrEqualTo(5).isLessThanOrEqualTo(10);
