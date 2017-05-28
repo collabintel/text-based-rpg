@@ -23,6 +23,9 @@ public class DungeonBuilder implements WorldBuilder {
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
                 Boolean enemyExists = random.nextBoolean();
+                if(i == 0 && j == 0){
+                    enemyExists = false;
+                }
                 locations[i][j] = new Room(i, j, enemyExists ? Optional.of(enemyCreator.create()) : Optional.empty());
             }
         }
