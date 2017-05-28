@@ -1,18 +1,10 @@
 package mad.rpg.utils;
 
-import mad.rpg.characters.infos.InfoType;
-import mad.rpg.game.context.Context;
-
-import java.io.*;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class FileDeserializer {
-
-    public static void main(String[] args) throws FileDeserializationException {
-        List<Context> contexts = new FileDeserializer().read(List.class, "sav");
-        String playerName = contexts.get(0).getPlayer().getInfo(InfoType.NAME).get().getValue().toString();
-        System.out.println(playerName);
-    }
 
     protected FileDeserializer() {
     }
