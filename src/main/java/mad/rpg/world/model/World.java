@@ -1,6 +1,8 @@
 package mad.rpg.world.model;
 
-public interface World {
+import java.io.Serializable;
+
+public interface World extends Serializable {
 
     Location[][] locations();
 

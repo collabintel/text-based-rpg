@@ -29,11 +29,15 @@ public class Messages {
     public static final String YOU_DEFEATED_ENEMY = "You defeated %s!";
     public static final String YOU_GAINED_EXPERIENCE = "You gained %s experience, total experience: %s";
     public static final String YOU_HAVE_HEALTH = "You have %s health";
+    public static final String DO_YOU_WANT_TO_START_A_NEW_GAME_OR_LOAD_GAME = "Do you want to start a -new game- or -load game-?";
+    public static final String DO_YOU_WANT_TO_SAVE_THIS_GAME = "Do you want to save this game?";
 
     /**
      * Error Messages
      */
     public static final String UNHANDLED_OPERATION = "ERROR! Game will exit now...";
     public static final String STATE_NOT_FOUND_EXCEPTION_MESSAGE = "Action Not Found For The Given Action Type";
+    public static final String FILE_SERIALIZATION_EXCEPTION_MESSAGE = "Error while saving object";
+    public static final String FILE_DESERIALIZATION_EXCEPTION_MESSAGE = "Error while reading object";
 
 }

@@ -8,12 +8,12 @@ public class Room implements Location {
 
     private Integer x;
     private Integer y;
-    private Optional<HostileCharacter> enemy;
+    private HostileCharacter enemy;
 
     public Room(Integer x, Integer y, Optional<HostileCharacter> enemy) {
         this.x = x;
         this.y = y;
-        this.enemy = enemy;
+        this.enemy = enemy.isPresent() ? enemy.get() : null;
     }
 
     @Override
@@ -28,6 +28,6 @@ public class Room implements Location {
 
     @Override
     public Optional<HostileCharacter> hostile() {
-        return enemy;
+        return Optional.ofNullable(enemy);
     }
 }

@@ -1,6 +1,8 @@
 package mad.rpg.characters.infos;
 
-public interface Info<T> {
+import java.io.Serializable;
+
+public interface Info<T> extends Serializable {
 
     InfoType getType();
 

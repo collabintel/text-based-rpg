@@ -5,6 +5,7 @@ import mad.rpg.characters.actions.ChooseCharacterAction;
 import mad.rpg.characters.actions.CreateCharacterAction;
 import mad.rpg.characters.model.CharacterRepository;
 import mad.rpg.characters.model.PlayerRepository;
+import mad.rpg.game.saves.SaveGameRepository;
 import mad.rpg.game.states.StateNotFoundException;
 import mad.rpg.game.states.StateType;
 import mad.rpg.world.actions.ExploreAction;
@@ -15,10 +16,12 @@ public class GameActionFactory implements ActionFactory {
 
     private CharacterRepository playerRepository;
     private WorldBuilder worldBuilder;
+    private SaveGameRepository saveGameRepository;
 
     public GameActionFactory() {
         playerRepository = new PlayerRepository();
         worldBuilder = new DungeonBuilder();
+        saveGameRepository = new SaveGameRepository();
     }
 
     @Override
@@ -36,11 +39,15 @@ public class GameActionFactory implements ActionFactory {
             case CHARACTER_CREATING_STATE:
                 return new CreateCharacterAction(playerRepository);
             case GAME_BEGINNING_STATE:
-                return new BeginGameAction();
+                return new BeginGameAction(saveGameRepository);
             case EXPLORATION_STATE:
                 return new ExploreAction();
             case BATTLE_STATE:
                 return new FightAction();
+            case GAME_LOADING_STATE:
+                return new LoadGameAction(saveGameRepository);
+            case GAME_SAVING_STATE:
+                return new SaveGameAction(saveGameRepository);
             case GAME_BUILDING_STATE:
                 return new BuildGameAction(worldBuilder);
         }

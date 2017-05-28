@@ -18,6 +18,11 @@ public class GameContext implements Context {
     }
 
     @Override
+    public List<EventType> events() {
+        return events;
+    }
+
+    @Override
     public Context addEvent(EventType event) {
         events.add(event);
         return this;

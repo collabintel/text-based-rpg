@@ -37,11 +37,16 @@ public class FightAction implements Action {
         commands.add(Commands.EXIT);
         commands.add(Commands.FIGHT);
         commands.add(Commands.RUN_AWAY);
+        commands.add(Commands.SAVE_GAME);
         while (true){
             UtilLocator.locate().output().printLine(Messages.DO_YOU_WANT_TO_FIGHT_OR_RUN_AWAY);
             String input = UtilLocator.locate().input().receiveInput(commands);
             if(input.equals(Commands.EXIT)){
                 context.addEvent(EventType.EXIT_REQUESTED);
+                return;
+            }
+            if(input.equals(Commands.SAVE_GAME)){
+                context.addEvent(EventType.SAVE_GAME);
                 return;
             }
             if(input.equals(Commands.RUN_AWAY)){

@@ -1,6 +1,8 @@
 package mad.rpg.characters.stats;
 
-public interface Stat<T> {
+import java.io.Serializable;
+
+public interface Stat<T> extends Serializable {
 
     StatType getType();
 

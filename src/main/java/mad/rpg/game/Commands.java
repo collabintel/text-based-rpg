@@ -15,4 +15,7 @@ public class Commands {
     public static final String GO_WEST = "go west";
     public static final String FIGHT = "fight";
     public static final String RUN_AWAY = "run away";
+    public static final String NEW_GAME = "new game";
+    public static final String LOAD_GAME = "load game";
+    public static final String SAVE_GAME = "save game";
 }

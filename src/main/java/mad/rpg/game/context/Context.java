@@ -4,7 +4,12 @@ import mad.rpg.characters.model.Character;
 import mad.rpg.game.events.EventType;
 import mad.rpg.world.model.World;
 
-public interface Context {
+import java.io.Serializable;
+import java.util.List;
+
+public interface Context extends Serializable {
+
+    List<EventType> events();
 
     Context addEvent(EventType command);
 

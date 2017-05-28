@@ -5,10 +5,11 @@ import mad.rpg.characters.infos.InfoType;
 import mad.rpg.characters.stats.Stat;
 import mad.rpg.characters.stats.StatType;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public interface Character {
+public interface Character extends Serializable {
 
     List<Info> getInfos();
 

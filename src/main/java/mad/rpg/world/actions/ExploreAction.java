@@ -24,15 +24,23 @@ public class ExploreAction implements Action {
         World world = context.getWorld();
         List<String> commands = new ArrayList<>();
         commands.add(Commands.EXIT);
+        commands.add(Commands.SAVE_GAME);
         commands.add(Commands.GO_NORTH);
         commands.add(Commands.GO_SOUTH);
         commands.add(Commands.GO_EAST);
         commands.add(Commands.GO_WEST);
         while(true){
+            if(context.events().get(context.events().size() - 2).equals(EventType.SAVE_GAME)) {
+                UtilLocator.locate().output().printLine(String.format(Messages.YOU_ARE_IN_ROOM, world.currentLocationIndex()));
+            }
             UtilLocator.locate().output().printLine(Messages.WHERE_DO_YOU_WANT_TO_GO_NOW);
             String input = UtilLocator.locate().input().receiveInput(commands);
             if(input.equals(Commands.EXIT)){
                 context.addEvent(EventType.EXIT_REQUESTED);
+                return;
+            }
+            if(input.equals(Commands.SAVE_GAME)){
+                context.addEvent(EventType.SAVE_GAME);
                 return;
             }
             if(input.equals(Commands.GO_NORTH)){

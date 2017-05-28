@@ -69,6 +69,17 @@ public class GameActionFactoryTest {
     public void should_createFightAction_when_createActionWithBattleStateTypeCalled() throws Exception {
         Action fightAction = actionFactory.create(StateType.BATTLE_STATE);
         assertThat(fightAction).isInstanceOf(FightAction.class);
+    }
 
+    @Test
+    public void should_createLoadGameAction_when_createActionWithGameLoadingStateTypeCalled() throws Exception {
+        Action loadGameAction = actionFactory.create(StateType.GAME_LOADING_STATE);
+        assertThat(loadGameAction).isInstanceOf(LoadGameAction.class);
+    }
+
+    @Test
+    public void should_createSaveGameAction_when_createActionWithGameSavingStateTypeCalled() throws Exception {
+        Action saveGameAction = actionFactory.create(StateType.GAME_SAVING_STATE);
+        assertThat(saveGameAction).isInstanceOf(SaveGameAction.class);
     }
 }
