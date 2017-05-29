@@ -1,0 +1,16 @@
+# Feature: As a player I want to save and resume a game
+
+Given I choose to load game
+When Saved games listed
+And I select a saved game
+Then I resume selected saved game
+
+Given I explore Dungeon
+When I save game
+Then Game is saved
+And I resume exploring
+
+Given I fight enemy
+When I save game
+Then Game is saved
+And I resume fighting

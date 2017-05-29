@@ -1,0 +1,24 @@
+# Feature: As a player I want to gain experience through fighting
+
+Given I go any direction
+When I arrive in the next room
+And There is an enemy in room
+Then I need to select if I want to fight or run away
+
+Given There is an enemy in room
+When I select run away
+Then I can go any direction
+
+Given There is an enemy in room
+When I select fight
+Then I lose health
+And Enemy loses health
+
+Given I fight enemy
+When Enemy dies
+Then I lose health
+And I gain experience from Enemy's experience coefficient
+
+Given I fight enemy
+When I die
+Then Game exists

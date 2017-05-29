@@ -1,0 +1,29 @@
+# Feature: As a player I want to explore
+
+Given I enter the dungeon
+When I go north
+Then I arrive in the next room to the north
+
+Given I enter the dungeon
+When I go east
+Then I arrive in the next room to the east
+
+Given I enter the dungeon
+When I go west
+Then I can't go that way
+
+Given I enter the dungeon
+When I go south
+Then I can't go that way
+
+Given I am in the room to the north of beginning room
+When I go south
+Then I arrive in the beginning room
+
+Given I am in the room to the east of beginning room
+When I go west
+Then I arrive in the beginning room
+
+Given I am in any room
+When I type exit and hit enter
+Then I exit the game

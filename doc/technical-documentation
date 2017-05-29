@@ -1,0 +1,28 @@
+Design Patterns
+
+In the project there are design patterns used like Finite State Machine, Factory Pattern, Builder Pattern,
+Service Locator pattern. Command Pattern could be used in Actions which will divide the complexity to necessary parts.
+
+Test Coverage
+
+The Project was developed in a TDD manner. But complexity is high in some parts, so the code coverage is not as high as
+it should be. Some actions should be taken to lower the complexity in those parts, like using Command Pattern in Actions
+as mentioned above.
+
+Use cases are documented in doc/use-case folder which could be used to build BDD tests.
+
+Project Structure (And Extending It)
+
+If you want to add a new feature to the game, you may need to add new states, transitions, conditions, actions and
+events. Current state table is documented in docs/state/transitions document. States mean which state your game is,
+transitions mean changes between states. Actions are executed when a certain state transition happens, conditions decide
+ which transition should happen. You can make these definitions in GameStateTableBuilder class.
+
+If you want to add new info or stat to characters, they are hold as info list and stat list in players. You can create
+players in the beginning of the game.
+
+Messages class holds texts used in command line. Commands and Choices are used for checking for input. Filenames holds
+necessary filenames.
+
+Utils are used for output, input and file operations.
+
