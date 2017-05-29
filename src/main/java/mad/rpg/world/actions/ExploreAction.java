@@ -29,10 +29,10 @@ public class ExploreAction implements Action {
         commands.add(Commands.GO_SOUTH);
         commands.add(Commands.GO_EAST);
         commands.add(Commands.GO_WEST);
+        if(context.events().get(context.events().size() - 2).equals(EventType.SAVE_GAME)) {
+            UtilLocator.locate().output().printLine(String.format(Messages.YOU_ARE_IN_ROOM, world.currentLocationIndex()));
+        }
         while(true){
-            if(context.events().get(context.events().size() - 2).equals(EventType.SAVE_GAME)) {
-                UtilLocator.locate().output().printLine(String.format(Messages.YOU_ARE_IN_ROOM, world.currentLocationIndex()));
-            }
             UtilLocator.locate().output().printLine(Messages.WHERE_DO_YOU_WANT_TO_GO_NOW);
             String input = UtilLocator.locate().input().receiveInput(commands);
             if(input.equals(Commands.EXIT)){
