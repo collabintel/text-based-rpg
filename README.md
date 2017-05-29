@@ -20,6 +20,13 @@ This game is built for the command line.
 
 You can find the documentation in doc folder.
 
+-_**Misc Files**_
+
+These files can be found in the same path with the application jar file.
+
+- character.sav file is for saved characters.
+- game.sav file is for saved games.
+
 -_**Improvements For The Future**_
 
 
@@ -33,3 +40,8 @@ You can find the documentation in doc folder.
 - There may be items in rooms.
 - Enemies may drop some items like healing potions, attack damage items.
 - Enemies created by their difficulties
+
+-_**Bugs**_
+
+- After a game saved and a new game played with same player, player's experience changes won't effect the saved game
+player.

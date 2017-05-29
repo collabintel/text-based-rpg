@@ -64,6 +64,18 @@ public class InputTest {
     }
 
     @Test
+    public void should_returnExitValue_when_choiceCalledAndInputIsExit() throws Exception {
+        System.setIn(new ByteArrayInputStream(Commands.EXIT.getBytes()));
+
+        Input inputUtil = new Input();
+        ArrayList<String> commands = new ArrayList<>();
+        commands.add(Commands.EXIT);
+        String input = inputUtil.choice(0, 9, commands);
+
+        assertThat(input).isEqualTo(Commands.EXIT);
+    }
+
+    @Test
     public void should_returnTrue_whenPromptCalledAndYesEntered() throws Exception {
         System.setIn(new ByteArrayInputStream("b\n12\nyes".getBytes()));
 

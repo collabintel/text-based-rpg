@@ -11,7 +11,7 @@ public class GameStateMachineBuilder {
     ActionFactory actionFactory;
     Context context;
 
-    public GameStateMachineBuilder() {
+    protected GameStateMachineBuilder() {
         stateTableBuilder = new GameStateTableBuilder();
         actionFactory = new GameActionFactory();
         context = new GameContext();

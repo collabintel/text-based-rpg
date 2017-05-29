@@ -22,4 +22,27 @@ public class UtilLocatorTest {
         assertThat(outputOne).isEqualTo(outputTwo);
     }
 
+    @Test
+    public void should_getSameFileUtilInstance_when_fileUtilCalledMoreThanOnce() throws Exception {
+        FileUtil fileUtilOne = UtilLocator.locate().fileUtil();
+        FileUtil fileUtilTwo = UtilLocator.locate().fileUtil();
+
+        assertThat(fileUtilOne).isEqualTo(fileUtilTwo);
+    }
+
+    @Test
+    public void should_getSameFileSerializerInstance_when_fileSerializerCalledMoreThanOnce() throws Exception {
+        FileSerializer fileSerializerOne = UtilLocator.locate().fileSerializer();
+        FileSerializer fileSerializerTwo = UtilLocator.locate().fileSerializer();
+
+        assertThat(fileSerializerOne).isEqualTo(fileSerializerTwo);
+    }
+
+    @Test
+    public void should_getSameFileDeserializerInstance_when_fileDeserializerCalledMoreThanOnce() throws Exception {
+        FileDeserializer fileDeserializerOne = UtilLocator.locate().fileDeserializer();
+        FileDeserializer fileDeserializerTwo = UtilLocator.locate().fileDeserializer();
+
+        assertThat(fileDeserializerOne).isEqualTo(fileDeserializerTwo);
+    }
 }

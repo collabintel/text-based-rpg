@@ -13,6 +13,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -62,6 +63,12 @@ public class EnemyTest {
     public void should_getSpecificStat_when_getStatCalled() throws Exception {
         Optional<Stat> health = enemy.getStat(StatType.HEALTH);
         assertThat(health.get().getValue()).isEqualTo(HEALTH);
+    }
+
+    @Test
+    public void should_getIdNotNull_when_idCalled() throws Exception {
+        UUID uuid = enemy.id();
+        assertThat(uuid).isNotNull();
     }
 
 }
