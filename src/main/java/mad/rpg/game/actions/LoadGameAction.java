@@ -2,6 +2,7 @@ package mad.rpg.game.actions;
 
 import mad.rpg.characters.infos.InfoType;
 import mad.rpg.characters.model.Character;
+import mad.rpg.characters.model.CharacterRepository;
 import mad.rpg.characters.stats.StatType;
 import mad.rpg.game.Commands;
 import mad.rpg.game.context.Context;
@@ -14,13 +15,16 @@ import mad.rpg.utils.UtilLocator;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class LoadGameAction implements Action {
 
     private SaveGameRepository saveGameRepository;
+    private CharacterRepository characterRepository;
 
-    public LoadGameAction(SaveGameRepository saveGameRepository) {
+    public LoadGameAction(SaveGameRepository saveGameRepository, CharacterRepository characterRepository) {
         this.saveGameRepository = saveGameRepository;
+        this.characterRepository = characterRepository;
     }
 
     @Override
@@ -47,8 +51,20 @@ public class LoadGameAction implements Action {
 
             SaveGame saveGame = saveGames.get(Integer.parseInt(choice) - 1);
             Context saveContext = saveGame.context();
+            Character saveContextPlayer = saveContext.getPlayer();
+
+            characterRepository
+                    .characters()
+                    .stream()
+                    .filter(character -> character.id().equals(saveContextPlayer.id()))
+                    .findFirst()
+                    .ifPresent(character -> {
+                        saveContextPlayer.getStat(StatType.EXPERIENCE).get().removeValue(saveContextPlayer.getStat(StatType.EXPERIENCE).get().getValue());
+                        saveContextPlayer.getStat(StatType.EXPERIENCE).get().addValue(character.getStat(StatType.EXPERIENCE).get().getValue());
+                    });
+
             context
-                    .withPlayer(saveContext.getPlayer())
+                    .withPlayer(saveContextPlayer)
                     .withWorld(saveContext.getWorld());
             for (EventType eventType : saveContext.events()) {
                 context.addEvent(eventType);

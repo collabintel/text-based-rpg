@@ -45,7 +45,7 @@ public class GameActionFactory implements ActionFactory {
             case BATTLE_STATE:
                 return new FightAction(playerRepository);
             case GAME_LOADING_STATE:
-                return new LoadGameAction(saveGameRepository);
+                return new LoadGameAction(saveGameRepository, playerRepository);
             case GAME_SAVING_STATE:
                 return new SaveGameAction(saveGameRepository);
             case GAME_BUILDING_STATE:
