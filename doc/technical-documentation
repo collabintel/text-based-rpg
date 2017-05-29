@@ -7,7 +7,7 @@ Test Coverage
 
 The Project was developed in a TDD manner. But complexity is high in some parts, so the code coverage is not as high as
 it should be. Some actions should be taken to lower the complexity in those parts, like using Command Pattern in Actions
-as mentioned above.
+as mentioned above. Code Coverage measurements: %88 of classes, %83 of methods, %56 of lines are covered.
 
 Use cases are documented in doc/use-case folder which could be used to build BDD tests.
 
