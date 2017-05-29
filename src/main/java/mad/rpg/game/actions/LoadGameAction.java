@@ -53,15 +53,18 @@ public class LoadGameAction implements Action {
             Context saveContext = saveGame.context();
             Character saveContextPlayer = saveContext.getPlayer();
 
-            characterRepository
-                    .characters()
-                    .stream()
-                    .filter(character -> character.id().equals(saveContextPlayer.id()))
-                    .findFirst()
-                    .ifPresent(character -> {
-                        saveContextPlayer.getStat(StatType.EXPERIENCE).get().removeValue(saveContextPlayer.getStat(StatType.EXPERIENCE).get().getValue());
-                        saveContextPlayer.getStat(StatType.EXPERIENCE).get().addValue(character.getStat(StatType.EXPERIENCE).get().getValue());
-                    });
+            Boolean hasCharacters = characterRepository.hasCharacters();
+            if(hasCharacters){
+                characterRepository
+                        .characters()
+                        .stream()
+                        .filter(character -> character.id().equals(saveContextPlayer.id()))
+                        .findFirst()
+                        .ifPresent(character -> {
+                            saveContextPlayer.getStat(StatType.EXPERIENCE).get().removeValue(saveContextPlayer.getStat(StatType.EXPERIENCE).get().getValue());
+                            saveContextPlayer.getStat(StatType.EXPERIENCE).get().addValue(character.getStat(StatType.EXPERIENCE).get().getValue());
+                        });
+            }
 
             context
                     .withPlayer(saveContextPlayer)
