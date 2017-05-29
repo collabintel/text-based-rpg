@@ -2,6 +2,7 @@ package mad.rpg.battle.actions;
 
 import mad.rpg.characters.infos.InfoType;
 import mad.rpg.characters.model.Character;
+import mad.rpg.characters.model.CharacterRepository;
 import mad.rpg.characters.model.HostileCharacter;
 import mad.rpg.characters.stats.Stat;
 import mad.rpg.characters.stats.StatType;
@@ -10,6 +11,8 @@ import mad.rpg.game.Messages;
 import mad.rpg.game.actions.Action;
 import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
+import mad.rpg.utils.FileDeserializationException;
+import mad.rpg.utils.FileSerializationException;
 import mad.rpg.utils.UtilLocator;
 import mad.rpg.world.model.World;
 
@@ -20,10 +23,12 @@ import java.util.Random;
 
 public class FightAction implements Action {
 
-    Random random;
+    private Random random;
+    private CharacterRepository characterRepository;
 
-    public FightAction() {
+    public FightAction(CharacterRepository characterRepository) {
         random = new Random();
+        this.characterRepository = characterRepository;
     }
 
     @Override
@@ -81,6 +86,14 @@ public class FightAction implements Action {
                 Stat experienceStat = player.getStat(StatType.EXPERIENCE).get();
                 experienceStat.addValue(experienceCoefficient);
                 String experience = experienceStat.getValue().toString();
+
+                try {
+                    characterRepository.updateStat(player, StatType.EXPERIENCE);
+                } catch (FileDeserializationException e) {
+                    UtilLocator.locate().output().printLine(e.getMessage());
+                } catch (FileSerializationException e) {
+                    UtilLocator.locate().output().printLine(e.getMessage());
+                }
 
                 UtilLocator.locate().output().printLine(String.format(Messages.YOU_DEFEATED_ENEMY, enemyName));
                 UtilLocator.locate().output().printLine(String.format(Messages.YOU_GAINED_EXPERIENCE, experienceCoefficient, experience));

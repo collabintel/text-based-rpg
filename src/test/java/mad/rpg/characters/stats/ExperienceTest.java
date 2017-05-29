@@ -51,8 +51,14 @@ public class ExperienceTest {
     }
 
     @Test
-    public void should_doNothing_when_removeSomeStatValue() throws Exception {
+    public void should_removeFromCurrentExprience_when_removeSomeStatValue() throws Exception {
         experience.removeValue(MODIFICATION_STAT_VALUE);
+        assertThat(experience.getValue()).isEqualTo(STAT_VALUE.subtract(MODIFICATION_STAT_VALUE));
+    }
+
+    @Test
+    public void should_doNothing_when_removeNullStatValue() throws Exception {
+        experience.removeValue(null);
         assertThat(experience.getValue()).isEqualTo(STAT_VALUE);
     }
 }

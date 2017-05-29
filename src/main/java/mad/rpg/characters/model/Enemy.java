@@ -7,15 +7,18 @@ import mad.rpg.characters.stats.StatType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class Enemy implements HostileCharacter {
 
+    private UUID id;
     private List<Info> infos;
     private List<Stat> stats;
 
     public Enemy(List<Info> infos, List<Stat> stats) {
         this.infos = infos;
         this.stats = stats;
+        id = UUID.randomUUID();
     }
 
     @Override
@@ -46,6 +49,11 @@ public class Enemy implements HostileCharacter {
                         .getType()
                         .equals(statType))
                 .findFirst();
+    }
+
+    @Override
+    public UUID id() {
+        return id;
     }
 
 }

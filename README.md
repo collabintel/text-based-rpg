@@ -27,7 +27,7 @@ You can find the documentation in doc folder.
 - Actions have high code complexity. Command pattern may be used for the business logic happens in there.
 - Code coverage should be increased.
 - Rooms should have descriptions. When you enter a room, you should see room's description. There should be a bunch of them loaded somewhere and while game was built, these should be appended to the rooms randomly.
-- Characters should be saved in file. Experiences should be saved to that file, too.
+- Characters should be saved in file. Experiences should be saved to that file, too. (DONE)
 - There should be a final room (Boss room if you might call).
 - After final room, there may be some more dungeons (different levels like 3D array) that player may want to visit. Or exit.
 - There may be items in rooms.

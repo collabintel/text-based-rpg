@@ -37,7 +37,10 @@ public class Experience implements Stat<BigDecimal> {
 
     @Override
     public void removeValue(BigDecimal removeValue) {
-        // Nothing to implement
+        if(removeValue == null){
+            return;
+        }
+        statValue = statValue.subtract(removeValue);
     }
 
 }

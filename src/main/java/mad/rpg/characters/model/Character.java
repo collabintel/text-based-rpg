@@ -8,6 +8,7 @@ import mad.rpg.characters.stats.StatType;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface Character extends Serializable {
 
@@ -18,4 +19,6 @@ public interface Character extends Serializable {
     Optional<Info> getInfo(InfoType infoType);
 
     Optional<Stat> getStat(StatType statType);
+
+    UUID id();
 }

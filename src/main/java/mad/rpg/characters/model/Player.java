@@ -7,15 +7,18 @@ import mad.rpg.characters.stats.StatType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class Player implements Character {
 
+    private UUID id;
     private List<Info> infos;
     private List<Stat> stats;
 
     public Player(List<Info> infos, List<Stat> stats) {
         this.infos = infos;
         this.stats = stats;
+        id = UUID.randomUUID();
     }
 
     @Override
@@ -46,5 +49,10 @@ public class Player implements Character {
                         .getType()
                         .equals(statType))
                 .findFirst();
+    }
+
+    @Override
+    public UUID id() {
+        return id;
     }
 }

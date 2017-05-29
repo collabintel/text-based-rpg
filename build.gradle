@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 group = 'mad'
-version = '0.1.0-ALPHA'
+version = '0.1.1-ALPHA'
 sourceCompatibility=1.8
 targetCompatibility=1.8
 

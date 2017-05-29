@@ -10,9 +10,7 @@ import mad.rpg.game.Messages;
 import mad.rpg.game.actions.Action;
 import mad.rpg.game.context.Context;
 import mad.rpg.game.events.EventType;
-import mad.rpg.utils.Input;
-import mad.rpg.utils.Output;
-import mad.rpg.utils.UtilLocator;
+import mad.rpg.utils.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -57,7 +55,19 @@ public class CreateCharacterAction implements Action {
             return;
         }
 
-        playerRepository.add(new Player(infos, stats));
+        try {
+            playerRepository.add(new Player(infos, stats));
+        } catch (FileDeserializationException e) {
+            UtilLocator.locate().output().printLine(e.getMessage());
+            context.addEvent(EventType.CHARACTER_NOT_CREATED);
+            UtilLocator.locate().output().printLine(Messages.CHARACTER_NOT_ADDED);
+            return;
+        } catch (FileSerializationException e) {
+            UtilLocator.locate().output().printLine(e.getMessage());
+            context.addEvent(EventType.CHARACTER_NOT_CREATED);
+            UtilLocator.locate().output().printLine(Messages.CHARACTER_NOT_ADDED);
+            return;
+        }
 
         context.addEvent(EventType.CHARACTER_CREATED);
         UtilLocator.locate().output().printLine(Messages.CHARACTER_ADDED);
