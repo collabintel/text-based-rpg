@@ -29,7 +29,7 @@ You can find the documentation in doc folder.
 - Rooms should have descriptions. When you enter a room, you should see room's description. There should be a bunch of them loaded somewhere and while game was built, these should be appended to the rooms randomly.
 - Characters should be saved in file. Experiences should be saved to that file, too.
 - There should be a final room (Boss room if you might call).
-- After final room, there may be some more dungeons that player may want to visit. Or exit.
+- After final room, there may be some more dungeons (different levels like 3D array) that player may want to visit. Or exit.
 - There may be items in rooms.
-- Enemies may drop some items.
+- Enemies may drop some items like healing potions, attack damage items.
 - Enemies created by their difficulties

@@ -22,5 +22,5 @@ Then Character is selected
 And Game starts building
 
 Given Characters Listed
-When I type "exit" and hit enter
+When I type "exit"g and hit enter
 Then I exit the game
