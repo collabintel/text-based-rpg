@@ -44,4 +44,4 @@ These files can be found in the same path with the application jar file.
 -_**Bugs**_
 
 - After a game saved and a new game played with same player, player's experience changes won't effect the saved game
-player.
+player. (FIXED)
