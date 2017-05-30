@@ -25,25 +25,25 @@ EndGameAction
 
 Transitions:
 
-From						To 							Action 						Conditions
+From                        To                          Action                      Conditions
 ---------------------------------------------------------------------------------------------------------------
 EmptyState                  GameBeginningState          BeginGameAction             No Condition
-GameBeginningState			CharactersListingState		ChooseCharacterAction		Player Chose To Play A New Game
-GameBeginningState			GameLoadingState			LoadGameAction				Player Chose To Load A Saved Game
-CharactersListingState		CharacterCreatingState		CreateCharacterAction		Create Character Selected
-CharactersListingState		GameBuildingState			BuildGameAction        		Listed Character Selected
-CharactersListingState		GameEndingState				EndGameAction       		Exit Requested
-CharacterCreatingState		CharactersListingState		ChooseCharacterAction		Character Created
-CharacterCreatingState		GameEndingState				EndGameAction        		Exit Requested
+GameBeginningState          CharactersListingState      ChooseCharacterAction       Player Chose To Play A New Game
+GameBeginningState          GameLoadingState            LoadGameAction              Player Chose To Load A Saved Game
+CharactersListingState      CharacterCreatingState      CreateCharacterAction       Create Character Selected
+CharactersListingState      GameBuildingState           BuildGameAction             Listed Character Selected
+CharactersListingState      GameEndingState             EndGameAction               Exit Requested
+CharacterCreatingState      CharactersListingState      ChooseCharacterAction       Character Created
+CharacterCreatingState      GameEndingState             EndGameAction               Exit Requested
 GameBuildingState           ExplorationState            ExploreAction               Game Built
-ExplorationState			BattleState					FightAction 				Enemy Found In The Room Explored
-ExplorationState			GameEndingState				EndGameAction				Exit Requested
-BattleState					ExplorationState			ExploreAction				Player Ran Away or Enemy Defeated
-BattleState					GameEndingState				EndGameAction				Player Defeated or Exit Requested
-GameLoadingState			ExplorationState			ExploreAction				Loaded Game Was Saved While Exploring
-GameLoadingState			BattleState					FightAction  				Loaded Game Was Saved While Fighting
-ExplorationState			GameSavingState				SaveGameAction				Player Chose To Save Game While Exploring
-BattleState					GameSavingState				SaveGameAction				Player Chose To Save Game While Fighting
-GameSavingState				ExplorationState			ExploreAction				Game Saved And Returned To Exploration State
-GameSavingState				BattleState					FightAction  				Game Saved And Returned To Battle State
+ExplorationState            BattleState                 FightAction                 Enemy Found In The Room Explored
+ExplorationState            GameEndingState             EndGameAction               Exit Requested
+BattleState                 ExplorationState            ExploreAction               Player Ran Away or Enemy Defeated
+BattleState                 GameEndingState             EndGameAction               Player Defeated or Exit Requested
+GameLoadingState            ExplorationState            ExploreAction               Loaded Game Was Saved While Exploring
+GameLoadingState            BattleState                 FightAction                 Loaded Game Was Saved While Fighting
+ExplorationState            GameSavingState             SaveGameAction              Player Chose To Save Game While Exploring
+BattleState                 GameSavingState             SaveGameAction              Player Chose To Save Game While Fighting
+GameSavingState             ExplorationState            ExploreAction               Game Saved And Returned To Exploration State
+GameSavingState             BattleState                 FightAction                 Game Saved And Returned To Battle State
 
